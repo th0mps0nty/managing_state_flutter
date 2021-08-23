@@ -1,0 +1,46 @@
+// Use IntelliSense to learn about possible attributes.
+// Hover to view descriptions of existing attributes.
+// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Android_Pixel_3a",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "emulator-5554",
+      "args": ["--track-widget-creation", "--dart-define=PROFILE=test"]
+    },
+    {
+      "name": "iPhone_11_Pro",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "FC4C0778-AA44-4A7B-954C-789CC5325DFE",
+      "args": ["--track-widget-creation", "--dart-define=PROFILE=stage"]
+    },
+    {
+      "name": "iPhone_11_Pro_Max",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "6042E7A9-3A65-4A97-8041-7E406970CDCB",
+      "args": ["--track-widget-creation", "--dart-define=PROFILE=dev"]
+    },
+    {
+      "name": "iPhone_11_Pro_13",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "FC4C0778-AA44-4A7B-954C-789CC5325DFE",
+      "args": ["--track-widget-creation", "--dart-define=PROFILE=dev"]
+    }
+  ],
+  "compounds": [
+    {
+      "name": "All Devices",
+      "configurations": [
+        "iPhone_11_Pro_Max",
+        "iPhone_11_Pro",
+        "Android_Pixel_3a"
+      ]
+    }
+  ]
+}
