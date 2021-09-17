@@ -1,66 +1,63 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+// import 'package:flutter/rendering.dart';
 
 void main() {
   runApp(App());
 }
 
+const List<String> urls = [
+  'https://placekitten.com/640/360',
+  'https://placekitten.com/640/360',
+  'https://placekitten.com/640/360',
+  'https://placekitten.com/640/360',
+  'https://placekitten.com/640/360',
+  'https://placekitten.com/640/360'
+];
+
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Photo Viewer',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      title: 'Photo Viewer Pluralsight',
+      home: GalleryPage(
+        title: 'Image Gallery',
+        urls: urls,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-
+class GalleryPage extends StatelessWidget {
   final String title;
+  final List<String> urls;
 
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  const GalleryPage({required this.title, required this.urls});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(this.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+      body: GridView.count(
+        primary: false,
+        crossAxisCount: 2,
+        children: List.of(urls.map((url) => Photo(url: url))),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
+    );
+  }
+}
+
+class Photo extends StatelessWidget {
+  final String url;
+
+  const Photo({required this.url});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(10),
+      child: Image.network(url),
     );
   }
 }

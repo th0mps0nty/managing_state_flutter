@@ -16,15 +16,22 @@ void main() {
     await tester.pumpWidget(App());
 
     // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.byType(MaterialApp), findsOneWidget);
+    // expect(find.text('1'), findsNothing);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // // Tap the '+' icon and trigger a frame.
+    // await tester.tap(find.byIcon(Icons.add));
+    // await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // // Verify that our counter has incremented.
+    // expect(find.text('0'), findsNothing);
+    // expect(find.text('1'), findsOneWidget);
+  });
+  
+  testWidgets('Photo widget displays a random kitten picture',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(Photo(url: 'https://placekitten.com/640/360'));
+
+    expect(find.byType(Image), findsOneWidget);
   });
 }
